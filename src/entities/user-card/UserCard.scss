@@ -1,0 +1,55 @@
+.user-card {
+	width: 100%;
+
+	& .user {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: var(--color-primary);
+		border-radius: var(--border-radius);
+		padding: 10px;
+
+		& .user-info {
+			display: flex;
+			justify-content: start;
+			align-items: center;
+			gap: 1rem;
+
+			& .display-name {
+				font-size: var(--typography-header4);
+				color: var(--color-panel);
+				font-family: var(--base-rubik);
+			}
+		}
+	}
+}
+
+@media (min-width: 1024px) {
+	.user-card {
+		grid-row-start: 1;
+		grid-row-end: 3;
+		grid-column-start: 1;
+		grid-column-end: 2;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+
+		& .user {
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 2.5rem 0 0 1.5rem;
+			justify-content: flex-start;
+			flex-grow: 1;
+
+			& .user-info {
+				flex-direction: column;
+				align-items: flex-start;
+
+				& .display-name {
+					margin-top: 1.5rem;
+					font-size: var(--typography-header3);
+				}
+			}
+		}
+	}
+}

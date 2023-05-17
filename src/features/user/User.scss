@@ -1,0 +1,30 @@
+.view-selector {
+	padding: 1rem 2rem;
+	display: flex;
+	justify-content: space-between;
+
+	&__item {
+		cursor: pointer;
+		color: var(--color-gray2);
+		font-size: var(--typography-small);
+
+		&:hover,
+		&--active {
+			color: var(--color-text);
+		}
+	}
+}
+
+@media (min-width: 1024px) {
+	.view-selector {
+		flex-direction: column;
+		padding-left: 1.5rem;
+
+		&__item {
+			font-size: var(--typography-body);
+		}
+		&__item:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
+}

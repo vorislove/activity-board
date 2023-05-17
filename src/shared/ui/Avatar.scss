@@ -1,0 +1,14 @@
+.avatar {
+	border-radius: 50%;
+	height: 70px;
+	width: 70px;
+	border: 2px solid var(--color-panel);
+	box-shadow: 0 0 10px var(--color-gray);
+}
+
+@media (min-width: 1024px) {
+	.avatar {
+		height: 90px;
+		width: 90px;
+	}
+}

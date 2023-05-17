@@ -1,0 +1,29 @@
+.wrapper {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.login {
+	margin: 10px;
+}
+
+.btns {
+	margin-top: 24px;
+	min-width: 80vw;
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}
+
+.title {
+	display: flex;
+	justify-content: center;
+}
+
+@media (min-width: 1024px) {
+	.btns {
+		min-width: 400px;
+	}
+}
