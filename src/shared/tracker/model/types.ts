@@ -20,6 +20,13 @@ export interface Data {
 	dataId: string;
 }
 
+export interface DataPayLoad {
+	title: string;
+	timeframes: Timeframes;
+	color: string;
+	img: string;
+}
+
 export interface DataState {
 	userData?: Data[] | null;
 	error?: SerializedError;
@@ -29,7 +36,6 @@ export interface DataState {
 
 export interface PayLoad {
 	userData?: Data[] | null;
-	_id: string;
 }
 
 export interface ViewType {

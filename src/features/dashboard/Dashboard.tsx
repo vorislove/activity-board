@@ -30,7 +30,7 @@ export const Dashboard = () => {
 
 	const items = data?.map((item) => (
 		<DashboardItem
-			key={item.title}
+			key={item.dataId}
 			color={item.color}
 			title={item.title}
 			img={`/assets/${item.img}`}
