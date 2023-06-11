@@ -1,6 +1,6 @@
-export * from './Card';
-export * from './Icon';
-export * from './Loader';
-export * from './avatar';
-export * from './button';
-export * from './skeleton';
+export { Card } from './card/Card';
+export { Icon } from './icon/Icon';
+export { Loader } from './loader/Loader';
+export { Avatar } from './avatar/Avatar';
+export { Button } from './button/Button';
+export { Skeleton } from './skeleton/Skeleton';

@@ -1,9 +1,9 @@
-import { TrackerListSkeltons } from 'entities/skeltons';
-import { DashboardItem } from 'features/dashboard-item/DashboardItem';
+import { TrackerListSkeltons } from 'entities';
+import { DashboardItem } from 'features';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/hooks';
-import { initData, isLoadingSelector, trackerSelector, viewSelector } from 'shared/tracker/model';
-import { idSelector } from 'shared/viewer/model';
+import { initData, isLoadingSelector, trackerSelector, viewSelector } from 'shared/tracker';
+import { idSelector } from 'shared/viewer';
 
 export const Dashboard = () => {
 	const data = useAppSelector(trackerSelector);

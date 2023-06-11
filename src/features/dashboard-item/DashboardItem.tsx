@@ -1,7 +1,7 @@
 import { FC, useCallback, useMemo, useState } from 'react';
-import { Card } from 'shared/ui/Card/Card';
+import { Card } from 'shared/ui/card/Card';
 import { Button } from 'shared/ui/button/Button';
-import { Timeframes, setPrevious, updateData, updateTime } from 'shared/tracker/model';
+import { Timeframes, setPrevious, updateData, updateTime } from 'shared/tracker';
 import useAmountOfTime from 'shared/hooks/useAmountOfTime';
 import { useAppDispatch } from 'shared/hooks/hooks';
 import useTimer from 'shared/hooks/useTimer';

@@ -1,8 +1,8 @@
 import react from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/hooks';
-import { isUserAuthenticatedSelector, PayLoad } from 'shared/viewer/model';
+import { isUserAuthenticatedSelector, PayLoad } from 'shared/viewer';
 import { useCallback, useEffect } from 'react';
-import { login, logout } from 'shared/viewer/model';
+import { login, logout } from 'shared/viewer';
 import { browserSessionPersistence, onAuthStateChanged, setPersistence } from 'firebase/auth';
 import { auth } from 'shared/config/firebase';
 

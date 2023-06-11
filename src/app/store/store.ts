@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { dataSlice } from 'shared/tracker/model';
-import { authSlice } from 'shared/viewer/model';
+import { themeSlice } from 'shared/theme-slice/sliceTheme';
+import { dataSlice } from 'shared/tracker';
+import { authSlice } from 'shared/viewer';
 
 export const store = configureStore({
 	reducer: {
 		auth: authSlice.reducer,
-		data: dataSlice.reducer
+		data: dataSlice.reducer,
+		theme: themeSlice.reducer
 	}
 });
 

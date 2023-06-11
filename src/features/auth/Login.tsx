@@ -2,8 +2,8 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/hooks';
 import { Button } from 'shared/ui/button/Button';
 import { Card } from 'shared/ui/Card';
 
-import { isUserAuthenticatedSelector, PayLoad } from 'shared/viewer/model';
-import { login } from 'shared/viewer/model';
+import { isUserAuthenticatedSelector, PayLoad } from 'shared/viewer';
+import { login } from 'shared/viewer';
 
 import './Login.scss';
 

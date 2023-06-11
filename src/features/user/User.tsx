@@ -1,7 +1,7 @@
 import { UserCard } from 'entities';
-import { displayNameSelector, photoSelector } from 'shared/viewer/model';
+import { displayNameSelector, photoSelector } from 'shared/viewer';
 import { useAppSelector, useAppDispatch } from 'shared/hooks/hooks';
-import { ViewType, setView, viewSelector } from 'shared/tracker/model';
+import { ViewType, setView, viewSelector } from 'shared/tracker';
 import './User.scss';
 
 export const User = () => {
