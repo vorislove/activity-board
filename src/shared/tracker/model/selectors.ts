@@ -8,10 +8,6 @@ export const trackerSelector = createSelector(dataSelector, (data) => {
 	return data.userData;
 });
 
-export const idDataSelector = createSelector(dataSelector, (data) => {
-	return data._id;
-});
-
 export const errorSelector = createSelector(dataSelector, (data) => {
 	return data.error;
 });

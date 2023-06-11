@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import Icon from './Icon';
 import { ReactNode } from 'react';
+import Icon from 'shared/ui/Icon/Icon';
 import clsx from 'clsx';
 import './Button.scss';
 

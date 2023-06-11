@@ -1,6 +1,6 @@
 import { User } from 'features';
 import './index.scss';
-import { Dashboard } from 'features/dashboard/Dashboard';
+import { Dashboard } from 'widgets/dashboard/Dashboard';
 
 const HomePage = () => {
 	return (

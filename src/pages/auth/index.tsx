@@ -1,5 +1,5 @@
 import { Login } from 'features/auth/Login';
-import { Button } from 'shared/ui/Button';
+import { Button } from 'shared/ui/button/Button';
 
 const AuthPage = () => {
 	return (

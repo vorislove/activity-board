@@ -18,6 +18,12 @@ export const User = () => {
 		<UserCard photo={photo ? photo : ''} name={name ? name : ''}>
 			<div className="view-selector">
 				<div
+					className={`view-selector__item ${view === 'hours' ? 'view-selector__item--active' : ''}`}
+					onClick={() => viewHandler('hours')}
+				>
+					Часы
+				</div>
+				<div
 					className={`view-selector__item ${view === 'daily' ? 'view-selector__item--active' : ''}`}
 					onClick={() => viewHandler('daily')}
 				>

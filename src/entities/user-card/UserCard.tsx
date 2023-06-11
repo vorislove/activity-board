@@ -1,8 +1,8 @@
 import { FC, ReactNode } from 'react';
-import { Avatar } from 'shared/ui/Avatar';
+import { Avatar } from 'shared/ui/avatar/Avatar';
 import { useAppDispatch } from 'shared/hooks/hooks';
-import { Card } from 'shared/ui/Card';
-import { Button } from 'shared/ui/Button';
+import { Card } from 'shared/ui/Card/Card';
+import { Button } from 'shared/ui/button/Button';
 import { logout } from 'shared/viewer/model';
 import './UserCard.scss';
 import useDeviceType from 'shared/hooks/useTypeDevices';
