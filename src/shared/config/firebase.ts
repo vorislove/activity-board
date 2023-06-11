@@ -12,9 +12,6 @@ const firebaseConfig = {
 	appId: process.env.VITE_APP_ID
 };
 
-const i = process.env.VITE_APP_ID;
-console.log(i);
-
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
