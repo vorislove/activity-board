@@ -1,6 +1,6 @@
 import { TrackerListSkeltons } from 'entities/skeltons';
 import { DashboardItem } from 'features/dashboard-item/DashboardItem';
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/hooks';
 import { initData, isLoadingSelector, trackerSelector, viewSelector } from 'shared/tracker/model';
 import { idSelector } from 'shared/viewer/model';
@@ -12,14 +12,11 @@ export const Dashboard = () => {
 	const loading = useAppSelector(isLoadingSelector);
 	const dispatch = useAppDispatch();
 
-	const memoizedId = useMemo(() => id, [id]);
-
 	useEffect(() => {
-		if (memoizedId) {
-			dispatch(initData(memoizedId));
-			console.log(memoizedId);
+		if (id) {
+			dispatch(initData(id));
 		}
-	}, [dispatch, memoizedId]);
+	}, [dispatch, id]);
 
 	const items = data?.map((item) => (
 		<DashboardItem
