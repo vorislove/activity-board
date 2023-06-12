@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import { ReactNode } from 'react';
-import Icon from 'shared/ui/icon/Icon';
+import { FC } from 'react';
+
+import { Icon } from 'shared/ui';
 import clsx from 'clsx';
 import './Button.scss';
 

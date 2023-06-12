@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import { ReactNode } from 'react';
 import './Tabs.scss';
 import clsx from 'clsx';
 

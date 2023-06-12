@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Loader from 'shared/ui/loader/Loader';
+import { Loader } from 'shared/ui';
 
 export const withRouter = (component: () => React.ReactNode) => () =>
 	(

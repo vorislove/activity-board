@@ -8,8 +8,8 @@ import useTimer from 'shared/hooks/useTimer';
 import { Modal } from 'entities/modal/Modal';
 import EmojiPicker from 'emoji-picker-react';
 import { HexColorPicker } from 'react-colorful';
-import { ITab, Tabs } from 'entities/tabs';
 import './DashboardItem.scss';
+import { ITab, Tabs } from 'entities';
 
 interface IDashboardItem {
 	id: string;
