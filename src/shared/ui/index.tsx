@@ -1,7 +1,6 @@
-'use strict';
-export { Card } from './card/Card';
-export { Icon } from './icon/Icon';
-export { Loader } from './loader/Loader';
-export { Avatar } from './avatar/Avatar';
-export { Button } from './button/Button';
-export { Skeleton } from './skeleton/Skeleton';
+export * from './card/Card';
+export * from './icon/Icon';
+export * from './loader/Loader';
+export * from './avatar/Avatar';
+export * from './button/Button';
+export * from './skeleton/Skeleton';
