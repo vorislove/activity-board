@@ -1,11 +1,11 @@
 import { FC, useCallback, useMemo, useState } from 'react';
-import { Card } from 'shared/ui/card/Card';
-import { Button } from 'shared/ui/button/Button';
+import { Card } from 'shared/ui';
+import { Button } from 'shared/ui';
 import { Timeframes, setPrevious, updateData, updateTime } from 'shared/tracker';
 import useAmountOfTime from 'shared/hooks/useAmountOfTime';
 import { useAppDispatch } from 'shared/hooks/hooks';
 import useTimer from 'shared/hooks/useTimer';
-import { Modal } from 'entities/modal/Modal';
+import { Modal } from 'entities';
 import EmojiPicker from 'emoji-picker-react';
 import { HexColorPicker } from 'react-colorful';
 import './DashboardItem.scss';

@@ -1,7 +1,6 @@
-import React, { FC, useRef } from 'react';
-import clsx from 'clsx';
+import { FC, useRef } from 'react';
 import './Modal.scss';
-import { Button } from 'shared/ui/button';
+
 import { CSSTransition } from 'react-transition-group';
 
 interface IModal {
@@ -12,9 +11,6 @@ interface IModal {
 
 export const Modal: FC<IModal> = ({ isOpen = false, onClose, children }) => {
 	const modalRef = useRef(null);
-	// if (!isOpen) {
-	// 	return null;
-	// }
 
 	return (
 		<>
