@@ -1,6 +1,6 @@
 import { FC, useCallback, useMemo, useState } from 'react';
-import { Card } from 'shared/ui';
-import { Button } from 'shared/ui';
+import { Card } from 'shared/ui/card';
+import { Button } from 'shared/ui/button';
 import { Timeframes, setPrevious, updateData, updateTime } from 'shared/tracker';
 import useAmountOfTime from 'shared/hooks/useAmountOfTime';
 import { useAppDispatch } from 'shared/hooks/hooks';
