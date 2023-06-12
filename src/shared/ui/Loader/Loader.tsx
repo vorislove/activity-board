@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Icon } from 'shared/ui/icon/Icon';
+import { Icon } from 'shared/ui';
 import './Loader.scss';
 
 interface ILoader {
