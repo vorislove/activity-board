@@ -1,3 +1,4 @@
+'use strict';
 export { Card } from './card/Card';
 export { Icon } from './icon/Icon';
 export { Loader } from './loader/Loader';
