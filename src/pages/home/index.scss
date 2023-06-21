@@ -1,21 +1,42 @@
 .dashboard {
 	min-height: 100vh;
-	padding: 4rem 0.5rem;
+	padding: 4rem 2.5rem;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	flex-direction: column;
+	align-items: start;
+	overflow-x: hidden;
 }
 .content {
 	width: 100%;
-	max-width: 900px;
-	display: grid;
+	display: flex;
 	gap: 1.5rem;
+	flex-direction: column;
 	justify-content: center;
-	grid-template-columns: repeat(1, minmax(300px, 330px));
+	flex-wrap: wrap;
+}
+
+@media (min-width: 767px) {
+	.dashboard {
+		flex-direction: column;
+	}
+
+	.content {
+		flex-direction: row;
+		max-width: 600px;
+	}
 }
 
 @media (min-width: 1024px) {
+	.dashboard {
+		margin-top: 5rem;
+		flex-direction: row;
+		max-width: 1300px;
+	}
+
 	.content {
-		grid-template-columns: repeat(4, 1fr);
+		align-items: start;
+		max-width: 900px;
+		height: 100%;
 	}
 }

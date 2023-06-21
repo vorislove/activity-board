@@ -5,7 +5,6 @@ import clsx from 'clsx';
 export interface ITab {
 	id: number;
 	title: string;
-	// content: any;
 	content: JSX.Element | React.ReactNode;
 }
 

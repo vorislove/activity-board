@@ -1,14 +1,15 @@
 import { FC, useCallback, useMemo, useState } from 'react';
-import { Card } from 'shared/ui/Card';
-import { Button } from 'shared/ui/button';
-import { Timeframes, setPrevious, updateData, updateTime } from 'shared/tracker';
+import { Card } from 'shared/ui';
+import { Button } from 'shared/ui';
+import { Timeframes, setPrevious, updateData, updateTime } from 'entities/tracker';
 import useAmountOfTime from 'shared/hooks/useAmountOfTime';
-import { useAppDispatch } from 'shared/hooks/hooks';
+import { useAppDispatch, useAppSelector } from 'shared/hooks/hooks';
 import useTimer from 'shared/hooks/useTimer';
-import { Modal } from 'entities';
-import EmojiPicker from 'emoji-picker-react';
+import { Modal } from 'shared/ui';
+import Picker from 'emoji-picker-react';
 import { HexColorPicker } from 'react-colorful';
 import { ITab, Tabs } from 'entities';
+import { themeColorSelector } from 'entities/theme';
 
 import './DashboardItem.scss';
 
@@ -39,6 +40,7 @@ export const DashboardItem: FC<IDashboardItem> = ({
 	const [titleValue, setTitlevalue] = useState<string>(title);
 	const [colorView, setColorView] = useState<string>(color);
 	const [emoji, setEmoji] = useState<string>(img);
+	const theme = useAppSelector(themeColorSelector);
 
 	const startHandler = useCallback(() => {
 		startTimer();
@@ -89,10 +91,11 @@ export const DashboardItem: FC<IDashboardItem> = ({
 				id: 0,
 				title: 'Иконка',
 				content: (
-					<EmojiPicker
+					<Picker
 						onEmojiClick={(emoji) => {
 							setEmoji(emoji.emoji);
 						}}
+						theme={theme}
 					/>
 				)
 			},
@@ -109,7 +112,7 @@ export const DashboardItem: FC<IDashboardItem> = ({
 		<Card>
 			<div className="dashboard-item" style={{ backgroundColor: color }}>
 				<div className="dashboard-item__menu">
-					<Button mode="icon-dark" icon="pencil" onClick={handleOpenModal} />
+					<Button mode="icon" icon="pencil" onClick={handleOpenModal} />
 					<span className="emoji">{img}</span>
 				</div>
 
@@ -120,7 +123,7 @@ export const DashboardItem: FC<IDashboardItem> = ({
 							<div className="color" style={{ backgroundColor: `${colorView}` }}>
 								<span className="emoji">{emoji}</span>
 							</div>
-							<Button mode="icon" icon="x" onClick={handleCloseModal} />
+							<Button mode="icon-dynamic" icon="x" onClick={handleCloseModal} />
 						</div>
 					</div>
 					<div className="rename">

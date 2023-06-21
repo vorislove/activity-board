@@ -1,9 +1,9 @@
 import { FC, ReactNode } from 'react';
 import { Avatar } from 'shared/ui/avatar/Avatar';
 import { useAppDispatch } from 'shared/hooks/hooks';
-import { Card } from 'shared/ui/Card';
-import { Button } from 'shared/ui/button';
-import { logout } from 'shared/viewer';
+import { Card } from 'shared/ui';
+import { Button } from 'shared/ui';
+import { logout } from 'entities/user';
 import './UserCard.scss';
 import useDeviceType from 'shared/hooks/useTypeDevices';
 
@@ -18,9 +18,9 @@ export const UserCard: FC<{ children?: ReactNode; photo: string; name: string }>
 
 	const btn =
 		typeDevice === 'desktop' ? (
-			<Button bl="link" mode="light-text" title="Выйти" onClick={() => dispatch(logout())} />
+			<Button bl="link" mode="text" title="Выйти" onClick={() => dispatch(logout())} />
 		) : (
-			<Button icon="logout" mode="icon-dark" onClick={() => dispatch(logout())} />
+			<Button icon="logout" mode="icon" onClick={() => dispatch(logout())} />
 		);
 
 	return (

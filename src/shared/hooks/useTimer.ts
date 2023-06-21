@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { updateTime } from '../tracker/model/sliceData';
+import { updateTime } from '../../entities/tracker/model/sliceData';
 
 export default function useTimer() {
 	const [time, setTime] = useState<number>(0);

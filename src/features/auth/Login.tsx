@@ -1,7 +1,7 @@
 import { useAppDispatch } from 'shared/hooks/hooks';
-import { Button } from 'shared/ui/button';
-import { Card } from 'shared/ui/Card';
-import { login } from 'shared/viewer';
+import { Button } from 'shared/ui';
+import { Card } from 'shared/ui';
+import { login } from 'entities/user';
 
 import './Login.scss';
 

@@ -6,7 +6,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		background-color: var(--color-primary);
+		background-color: var(--color-primary2);
 		border-radius: var(--border-radius);
 		padding: 10px;
 
@@ -15,10 +15,10 @@
 			justify-content: start;
 			align-items: center;
 			gap: 1rem;
+			color: var(--color-panel-static);
 
 			& .display-name {
 				font-size: var(--typography-header4);
-				color: var(--color-panel);
 				font-family: var(--base-rubik);
 			}
 		}
@@ -27,10 +27,10 @@
 
 @media (min-width: 1024px) {
 	.user-card {
-		grid-row-start: 1;
-		grid-row-end: 3;
-		grid-column-start: 1;
-		grid-column-end: 2;
+		// grid-row-start: 1;
+		// grid-row-end: 3;
+		// grid-column-start: 1;
+		// grid-column-end: 2;
 		height: 100%;
 		display: flex;
 		flex-direction: column;

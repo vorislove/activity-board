@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { themeSlice } from 'shared/theme-slice/sliceTheme';
-import { dataSlice } from 'shared/tracker';
-import { authSlice } from 'shared/viewer';
+import { themeSlice } from 'entities/theme/model/sliceTheme';
+import { dataSlice } from 'entities/tracker';
+import { authSlice } from 'entities/user';
 
 export const store = configureStore({
 	reducer: {

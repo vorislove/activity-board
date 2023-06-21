@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Icon } from 'shared/ui/Icon';
+import { Icon } from 'shared/ui';
 import clsx from 'clsx';
 import './Button.scss';
 
@@ -8,7 +8,7 @@ interface IButton {
 	title?: string;
 	icon?: string;
 	type?: 'submit' | 'button' | 'reset';
-	mode?: 'light' | 'base' | 'icon' | 'icon-dark' | 'text' | 'light-text';
+	mode?: 'light' | 'base' | 'icon' | 'icon-dynamic' | 'text' | 'light-text';
 	disabled?: boolean;
 	bl?: 'button' | 'link';
 	url?: string;
@@ -31,7 +31,7 @@ export const Button: FC<IButton> = ({
 		mode__light: mode === 'light',
 		mode__color: mode === 'base',
 		mode__icon: mode === 'icon',
-		mode__icon__dark: mode === 'icon-dark',
+		mode__icon__dynamic: mode === 'icon-dynamic',
 		mode__text: mode === 'text',
 		mode__text__light: mode === 'light-text'
 	});

@@ -1,9 +1,9 @@
 .dashboard-item {
 	width: 100%;
-	// padding-top: 2.15rem;
 	background-color: var(--color-gray2);
 	border-radius: var(--border-radius);
 	min-width: 200px;
+	max-width: 330px;
 	background-repeat: no-repeat;
 	background-position: 92% -8%;
 
@@ -15,7 +15,7 @@
 		margin-bottom: 1rem;
 
 		.title {
-			font-size: 25px;
+			font-size: var(--typography-header2);
 			font-weight: 600;
 		}
 
@@ -49,12 +49,18 @@
 		.modal-input {
 			margin-bottom: 0.5rem;
 			border-radius: var(--border-radius);
-			border: 1px solid var(--color-gray);
+			border: none;
 			width: 70%;
-			height: 36px;
-			font-size: medium;
+			height: 40px;
+			font-size: var(--typography-body);
 			margin-right: 7px;
-			padding: 0 10px;
+			padding: 0 15px;
+			color: var(--color-prymari);
+			background-color: var(--color-input);
+
+			&:focus {
+				outline: 1px solid var(--color-blue);
+			}
 		}
 	}
 
@@ -135,22 +141,18 @@
 			color: var(--color-gray2);
 
 			&-enter {
-				// transform: translateY(20px);
 				font-size: var(--typography-small);
 
 				&-active {
-					// transform: translateY(0);
 					font-size: var(--typography-header2);
 					transition: font-size 300ms;
 				}
 			}
 
 			&-exit {
-				// transform: translateY(0);
 				font-size: var(--typography-header2);
 
 				&-active {
-					// transform: translateY(20px);
 					font-size: var(--typography-small);
 					transition: font-size 300ms;
 				}
@@ -174,6 +176,8 @@
 
 @media (min-width: 1024px) {
 	.dashboard-item {
+		width: 250px;
+
 		.tracking-card {
 			&__body {
 				flex-direction: column;
@@ -186,5 +190,12 @@
 				margin-bottom: 0.75rem;
 			}
 		}
+	}
+}
+
+@media (min-width: 767px) {
+	.dashboard-item {
+		width: 250px;
+		height: 100%;
 	}
 }

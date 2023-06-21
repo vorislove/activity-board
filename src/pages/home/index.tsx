@@ -1,12 +1,13 @@
-import { User } from 'features';
+import { Dashboard } from 'widgets/dashboard';
+import { Sidebar } from 'widgets/sidebar';
+
 import './index.scss';
-import { Dashboard } from 'widgets';
 
 const HomePage = () => {
 	return (
 		<div className="dashboard">
+			<Sidebar />
 			<div className="content">
-				<User />
 				<Dashboard />
 			</div>
 		</div>

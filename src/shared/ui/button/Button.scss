@@ -17,7 +17,7 @@
 	border: none;
 	font-size: var(--typography-button, var(--typography-body), 1rem);
 	border-radius: var(--border-radius);
-	height: 36px;
+	height: 40px;
 	padding: 0 12px;
 	display: flex;
 	align-items: center;
@@ -56,19 +56,19 @@
 		border: 1px solid var(--color-gray);
 	}
 	&__color {
-		background-color: var(--color-primary);
-		color: var(--color-panel);
+		background-color: var(--color-primary2);
+		color: var(--color-panel-static);
 	}
 	&__icon {
-		color: var(--color-primary);
+		color: var(--color-panel-static);
 		background-color: rgba(0, 0, 0, 0);
 		padding: 0 12px;
 		width: 32px;
 		justify-content: center;
 		height: 32px;
 
-		&__dark {
-			color: var(--color-panel);
+		&__dynamic {
+			color: var(--color-primary);
 			background-color: rgba(0, 0, 0, 0);
 			padding: 0 12px;
 			width: 32px;
@@ -77,8 +77,8 @@
 		}
 	}
 	&__text {
-		color: var(--color-primary);
-		background-color: none;
+		color: var(--color-panel-static);
+		background-color: rgba(0, 0, 0, 0);
 		padding: 0;
 
 		&__light {

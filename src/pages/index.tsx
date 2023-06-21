@@ -1,7 +1,7 @@
 import { lazy, useCallback, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/hooks';
-import { isUserAuthenticatedSelector, login, logout, PayLoad } from 'shared/viewer';
+import { isUserAuthenticatedSelector, login, logout, PayLoad } from 'entities/user';
 import { browserSessionPersistence, onAuthStateChanged, setPersistence } from 'firebase/auth';
 import { auth } from 'shared/config/firebase';
 

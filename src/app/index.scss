@@ -1,9 +1,5 @@
 @import './styles/index.scss';
 
-::selection {
-	background-color: var(--base-primary12);
-}
-
 *,
 *::before,
 *::after {
@@ -52,4 +48,6 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: var(--color-panel);
+	color: var(--color-text);
 }

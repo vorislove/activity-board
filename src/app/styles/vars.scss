@@ -1,14 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
-:root {
+html[data-theme='light'] {
 	--color-dark: rgb(47, 47, 47);
-	--color-primary: rgb(19, 19, 19);
+	--color-primary2: rgb(19, 19, 19);
+	--color-input: rgb(246, 246, 246);
+	--color-panel: rgba(255, 255, 255, 1);
+	--color-gray: rgb(218, 218, 218);
+	--color-gray2: rgb(121, 121, 121);
+	--color-skeleton: rgb(223, 223, 223);
+	--color-text: #131313;
+}
+
+html[data-theme='dark'] {
+	--color-panel: #131313;
+	--color-text: #ffffff;
+	--color-dark: rgb(47, 47, 47);
+	--color-input: rgb(52, 52, 52);
+	--color-primary2: rgb(53, 53, 53);
+	--color-gray: rgb(114, 114, 114);
+	--color-gray2: rgb(183, 183, 183);
+	--color-skeleton: rgb(96, 96, 96);
+}
+
+:root {
+	--color-panel-static: rgba(255, 255, 255, 1);
+	--color-dark: rgb(47, 47, 47);
+	--color-primary2: rgb(19, 19, 19);
+	--color-input: rgb(246, 246, 246);
 	--color-panel: rgba(255, 255, 255, 1);
 	--color-gray: rgb(218, 218, 218);
 	--color-gray2: rgb(121, 121, 121);
 	--color-skeleton: rgb(223, 223, 223);
 
-	--color-blue: rgb(88, 71, 235);
+	--color-blue: rgb(66, 132, 247);
 	--color-orange: rgb(255, 140, 102);
 	--color-soft-blue: rgb(86, 194, 230);
 	--color-light-red: rgb(255, 92, 124);
@@ -19,7 +43,6 @@
 	--border-radius: 10px;
 
 	--base-ff: Inter, Manrope, sans-serif;
-	--color-text: rgb(46, 46, 46);
 	--base-rubik: 'Manrope', sans-serif;
 	--monospace-ff: 'JetBrains Mono', monospace;
 
