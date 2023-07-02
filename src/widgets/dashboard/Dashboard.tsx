@@ -16,7 +16,7 @@ export const Dashboard = () => {
 		if (id) {
 			dispatch(initData(id));
 		}
-	}, [dispatch, id]);
+	}, []);
 
 	const items = data?.map((item) => {
 		if (item.dataId) {

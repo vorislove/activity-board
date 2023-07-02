@@ -1,7 +1,14 @@
 import { FC, useCallback, useMemo, useState } from 'react';
 import { Card } from 'shared/ui';
 import { Button } from 'shared/ui';
-import { Timeframes, deleteTracker, setPrevious, updateData, updateTime } from 'entities/tracker';
+import {
+	DataState,
+	Timeframes,
+	deleteTracker,
+	setPrevious,
+	updateData,
+	updateTime
+} from 'entities/tracker';
 import useAmountOfTime from 'shared/hooks/useAmountOfTime';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/hooks';
 import useTimer from 'shared/hooks/useTimer';
@@ -18,7 +25,7 @@ interface IDashboardItem {
 	color: string;
 	title: string;
 	timeframes: Timeframes;
-	view?: 'hours' | 'daily' | 'weekly' | 'monthly';
+	view?: DataState['view'];
 	img?: string;
 	onClick?: () => void;
 }
@@ -67,7 +74,7 @@ export const DashboardItem: FC<IDashboardItem> = ({
 			hours: 'Часов',
 			daily: 'Дней',
 			weekly: 'Недель',
-			monthly: 'Месяцев'
+			minutes: 'Минут'
 		}),
 		[]
 	);

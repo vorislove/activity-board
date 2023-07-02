@@ -17,7 +17,7 @@ export const Modal: FC<IModal> = ({ isOpen = false, onClose, children }) => {
 			<CSSTransition
 				in={isOpen}
 				timeout={300}
-				classNames={'modal__content'}
+				classNames={'modal'}
 				unmountOnExit
 				nodeRef={modalRef}
 			>

@@ -18,6 +18,14 @@ export const User = () => {
 		<UserCard photo={photo ? photo : ''} name={name ? name : ''}>
 			<div className="view-selector">
 				<div
+					className={`view-selector__item ${
+						view === 'minutes' ? 'view-selector__item--active' : ''
+					}`}
+					onClick={() => viewHandler('minutes')}
+				>
+					Минуты
+				</div>
+				<div
 					className={`view-selector__item ${view === 'hours' ? 'view-selector__item--active' : ''}`}
 					onClick={() => viewHandler('hours')}
 				>
@@ -36,14 +44,6 @@ export const User = () => {
 					onClick={() => viewHandler('weekly')}
 				>
 					Недели
-				</div>
-				<div
-					className={`view-selector__item ${
-						view === 'monthly' ? 'view-selector__item--active' : ''
-					}`}
-					onClick={() => viewHandler('monthly')}
-				>
-					Месяцы
 				</div>
 			</div>
 		</UserCard>

@@ -19,7 +19,7 @@ export interface DataState {
 	error?: SerializedError;
 	isLoading: boolean;
 	isLoadingAdd: boolean;
-	view: 'hours' | 'daily' | 'weekly' | 'monthly';
+	view: 'minutes' | 'hours' | 'daily' | 'weekly';
 }
 
 export interface DataPayLoad {
@@ -34,5 +34,5 @@ export interface PayLoad {
 }
 
 export interface ViewType {
-	view: 'hours' | 'daily' | 'weekly' | 'monthly';
+	view: DataState['view'];
 }
