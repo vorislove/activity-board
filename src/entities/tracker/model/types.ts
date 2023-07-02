@@ -11,13 +11,14 @@ export interface Data {
 	color: string;
 	img: string;
 	uid: string;
-	dataId: string;
+	dataId: string | null;
 }
 
 export interface DataState {
 	userData?: Data[] | null;
 	error?: SerializedError;
 	isLoading: boolean;
+	isLoadingAdd: boolean;
 	view: 'hours' | 'daily' | 'weekly' | 'monthly';
 }
 

@@ -16,6 +16,10 @@ export const isLoadingSelector = createSelector(dataSelector, (data) => {
 	return data.isLoading;
 });
 
+export const isLoadingAddSelector = createSelector(dataSelector, (data) => {
+	return data.isLoadingAdd;
+});
+
 export const viewSelector = createSelector(dataSelector, (data) => {
 	return data.view;
 });

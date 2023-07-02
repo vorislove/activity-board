@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { Data, DataPayLoad, DataState, PayLoad, Timeframes, ViewType } from './types';
+import { Data, DataPayLoad, DataState, ViewType } from './types';
 import {
 	query,
 	collection,
@@ -8,13 +8,15 @@ import {
 	addDoc,
 	getDoc,
 	doc,
-	updateDoc
+	updateDoc,
+	deleteDoc
 } from 'firebase/firestore';
 import { db } from 'shared/config/firebase';
 
 export const initialState: DataState = {
 	userData: undefined,
 	isLoading: false,
+	isLoadingAdd: false,
 	view: 'hours',
 	error: undefined
 };
@@ -25,7 +27,7 @@ export const initData = createAsyncThunk<Data[], string>('data/initData', async 
 		const queryAllSnap = await getDocs(q);
 		if (queryAllSnap.size === 0) {
 			const querySnapshot = await getDocs(collection(db, 'initialData'));
-			const promises = querySnapshot.docs.map(async (document) => {
+			querySnapshot.docs.map(async (document) => {
 				const data = document.data() as DataPayLoad;
 				const newData = { ...data, uid: id };
 				const docRef = await addDoc(collection(db, 'data'), newData);
@@ -33,7 +35,7 @@ export const initData = createAsyncThunk<Data[], string>('data/initData', async 
 				await updateDoc(doc(db, 'data', docSnap.id), { dataId: docSnap.id });
 				userData.push({ ...newData, dataId: docSnap.id });
 			});
-			await Promise.all(promises);
+			// await Promise.all(promises);
 			return userData;
 		} else {
 			queryAllSnap.forEach((document) => {
@@ -100,6 +102,55 @@ export const updateData = createAsyncThunk<
 	}
 });
 
+export const addNewTracker = createAsyncThunk<Data, string>(
+	'data/addNewTracker',
+	async (uid, thunkApi) => {
+		try {
+			const newTracker: Data = {
+				uid: uid,
+				title: 'Новая категория',
+				timeframes: {
+					previous: 0,
+					start: 0
+				},
+				color: 'rgb(107, 218, 111)',
+				img: '📓',
+				dataId: null
+			};
+			const dataCollection = collection(db, 'data');
+			await addDoc(dataCollection, newTracker);
+			const q = query(dataCollection, where('uid', '==', uid));
+			const queryAllSnap = await getDocs(q);
+			let docId = null;
+			queryAllSnap.docs.map(async (document) => {
+				if (document.data().dataId === null) {
+					const data = document.data() as Data;
+					docId = document.id;
+					const docRef = doc(db, 'data', document.id);
+					await updateDoc(docRef, { dataId: document.id });
+				}
+			});
+			const snap = query(dataCollection, where('uid', '==', uid), where('dataId', '==', docId));
+			const newDoc = await getDocs(snap);
+			return newDoc.docs[0].data() as Data;
+		} catch (e) {
+			throw thunkApi.rejectWithValue({ e });
+		}
+	}
+);
+
+export const deleteTracker = createAsyncThunk<string, string>(
+	'data/deleteTracker',
+	async (id, thunkApi) => {
+		try {
+			await deleteDoc(doc(db, 'data', id));
+			return id;
+		} catch (e) {
+			throw thunkApi.rejectWithValue({ e });
+		}
+	}
+);
+
 export const dataSlice = createSlice({
 	name: 'data',
 	initialState,
@@ -137,6 +188,19 @@ export const dataSlice = createSlice({
 			state.userData = action.payload;
 		});
 		builder.addCase(updateData.rejected, (state, action) => {
+			state.error = action.error;
+		});
+		builder.addCase(deleteTracker.fulfilled, (state, action) => {
+			state.userData = state.userData?.filter((item) => item.dataId !== action.payload);
+		});
+		builder.addCase(addNewTracker.pending, (state) => {
+			state.isLoadingAdd = true;
+		});
+		builder.addCase(addNewTracker.fulfilled, (state, action) => {
+			state.isLoadingAdd = false;
+			state.userData?.push(action.payload);
+		});
+		builder.addCase(addNewTracker.rejected, (state, action) => {
 			state.error = action.error;
 		});
 	}
