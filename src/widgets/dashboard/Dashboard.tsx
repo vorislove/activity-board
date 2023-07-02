@@ -1,9 +1,9 @@
-import { TrackerListSkeltons } from 'entities';
-import { DashboardItem } from 'features';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/hooks';
 import { initData, isLoadingSelector, trackerSelector, viewSelector } from 'entities/tracker';
 import { idSelector } from 'entities/user';
+import { DashboardItem } from 'features';
+import { TrackerListSkeltons } from 'entities';
 
 export const Dashboard = () => {
 	const data = useAppSelector(trackerSelector);
@@ -18,16 +18,21 @@ export const Dashboard = () => {
 		}
 	}, [dispatch, id]);
 
-	const items = data?.map((item) => (
-		<DashboardItem
-			key={item.dataId}
-			color={item.color}
-			title={item.title}
-			img={item.img}
-			timeframes={item.timeframes}
-			view={view}
-			id={item.dataId}
-		/>
-	));
+	const items = data?.map((item) => {
+		if (item.dataId) {
+			return (
+				<DashboardItem
+					key={item.dataId}
+					color={item.color}
+					title={item.title}
+					img={item.img}
+					timeframes={item.timeframes}
+					view={view}
+					id={item.dataId}
+				/>
+			);
+		}
+		return null;
+	});
 	return <>{loading ? <TrackerListSkeltons /> : items}</>;
 };

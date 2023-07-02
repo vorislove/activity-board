@@ -4,7 +4,6 @@
 	gap: 1.5rem;
 	min-width: 300px;
 	max-width: 330px;
-	padding-bottom: 1.5rem;
 	justify-content: center;
 	margin: 0 auto;
 	width: 100%;
@@ -12,7 +11,7 @@
 
 @media (min-width: 767px) {
 	.sidebar {
-		max-width: calc(500px + 1.5rem);
+		max-width: calc(504px + 1.5rem);
 		// padding: ;
 	}
 }

@@ -1,7 +1,7 @@
 import { FC, useCallback, useMemo, useState } from 'react';
 import { Card } from 'shared/ui';
 import { Button } from 'shared/ui';
-import { Timeframes, setPrevious, updateData, updateTime } from 'entities/tracker';
+import { Timeframes, deleteTracker, setPrevious, updateData, updateTime } from 'entities/tracker';
 import useAmountOfTime from 'shared/hooks/useAmountOfTime';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/hooks';
 import useTimer from 'shared/hooks/useTimer';
@@ -72,6 +72,10 @@ export const DashboardItem: FC<IDashboardItem> = ({
 		[]
 	);
 
+	const deleteHadler = useCallback(() => {
+		dispatch(deleteTracker(id));
+	}, [id]);
+
 	const handleOpenModal = useCallback(() => {
 		setIsOpenModal(true);
 	}, []);
@@ -96,6 +100,7 @@ export const DashboardItem: FC<IDashboardItem> = ({
 							setEmoji(emoji.emoji);
 						}}
 						theme={theme}
+						autoFocusSearch={false}
 					/>
 				)
 			},
@@ -120,6 +125,7 @@ export const DashboardItem: FC<IDashboardItem> = ({
 					<div className="modal-header">
 						<span className="title">{title}</span>
 						<div>
+							<Button mode="icon-dynamic" icon="trash" onClick={deleteHadler} />
 							<div className="color" style={{ backgroundColor: `${colorView}` }}>
 								<span className="emoji">{emoji}</span>
 							</div>
