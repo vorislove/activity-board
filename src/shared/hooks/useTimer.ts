@@ -1,4 +1,4 @@
-import { useRef, useState, useMemo, useEffect, useCallback } from 'react';
+import { useRef, useState, useMemo, useEffect } from 'react';
 
 type TTimer = (
 	start: number,
