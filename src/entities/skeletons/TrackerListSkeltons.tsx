@@ -1,11 +1,10 @@
-import React from 'react';
 import useDeviceType from 'shared/hooks/useTypeDevices';
 import { Skeleton } from 'shared/ui';
 
 export const TrackerListSkeltons = () => {
 	const skeletons = new Array(6).fill(null);
 	const typeDevice = useDeviceType();
-	const height = typeDevice === 'mobile' ? '159px' : '100%';
+	const height = typeDevice === 'mobile' ? '159px' : '186px';
 
 	return (
 		<>
