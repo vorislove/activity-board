@@ -2,14 +2,14 @@ import { FC, useState } from 'react';
 import './Tabs.scss';
 import clsx from 'clsx';
 
-export interface ITab {
+export type TTab = {
 	id: number;
 	title: string;
 	content: JSX.Element | React.ReactNode;
-}
+};
 
 interface Tabs {
-	tabs: ITab[];
+	tabs: TTab[];
 }
 
 export const Tabs: FC<Tabs> = ({ tabs }) => {

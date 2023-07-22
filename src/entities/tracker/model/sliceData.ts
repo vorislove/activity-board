@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { Data, DataPayLoad, DataState, ViewType } from './types';
+import { Data, DataPayLoad, DataState, Timeframes, ViewType } from './types';
 import {
 	query,
 	collection,
@@ -23,19 +23,21 @@ export const initialState: DataState = {
 export const initData = createAsyncThunk<Data[], string>('data/initData', async (id, thunkAPI) => {
 	try {
 		const userData: Data[] = [];
-		const q = await query(collection(db, 'data'), where('uid', '==', id));
+		const q = query(collection(db, 'data'), where('uid', '==', id));
 		const queryAllSnap = await getDocs(q);
 		if (queryAllSnap.size === 0) {
 			const querySnapshot = await getDocs(collection(db, 'initialData'));
-			querySnapshot.docs.map(async (document) => {
-				const data = document.data() as DataPayLoad;
-				const newData = { ...data, uid: id };
-				const docRef = await addDoc(collection(db, 'data'), newData);
-				const docSnap = await getDoc(docRef);
-				await updateDoc(doc(db, 'data', docSnap.id), { dataId: docSnap.id });
-				userData.push({ ...newData, dataId: docSnap.id });
-			});
-			// await Promise.all(promises);
+			await Promise.all(
+				querySnapshot.docs.map(async (document) => {
+					const data = document.data() as DataPayLoad;
+					const newData = { ...data, uid: id };
+					const docRef = await addDoc(collection(db, 'data'), newData);
+					const docSnap = await getDoc(docRef);
+					await updateDoc(doc(db, 'data', docSnap.id), { dataId: docSnap.id });
+					userData.push({ ...newData, dataId: docSnap.id });
+				})
+			);
+
 			return userData;
 		} else {
 			queryAllSnap.forEach((document) => {
@@ -63,7 +65,8 @@ export const updateTime = createAsyncThunk<Data[], { time: number; id: string }>
 				newTimeframes = {
 					...timeframes,
 					previous: timeframes.previous + (Date.now() - timeframes.start),
-					start: 0
+					start: 0,
+					paused: 0
 				};
 			}
 			const newData = [
@@ -76,6 +79,34 @@ export const updateTime = createAsyncThunk<Data[], { time: number; id: string }>
 			return newData;
 		} catch (e) {
 			throw rejectWithValue({ e });
+		}
+	}
+);
+
+export const startTrackerTime = createAsyncThunk<{ start: number; id: string }, string>(
+	'data/startTrackerTime',
+	async (id, thunkApi) => {
+		try {
+			const now = Date.now();
+			const docRef = doc(collection(db, 'data'), id);
+			await updateDoc(docRef, { 'timeframes.start': now, 'timeframes.paused': 0 });
+			return { start: now, id };
+		} catch (e) {
+			throw thunkApi.rejectWithValue({ e });
+		}
+	}
+);
+
+export const pauseTracker = createAsyncThunk<{ paused: number; id: string }, string>(
+	'data/startTrackerTime',
+	async (id, thunkApi) => {
+		try {
+			const now = Date.now();
+			const docRef = doc(collection(db, 'data'), id);
+			await updateDoc(docRef, { 'timeframes.paused': now });
+			return { paused: now, id };
+		} catch (e) {
+			throw thunkApi.rejectWithValue({ e });
 		}
 	}
 );
@@ -111,7 +142,8 @@ export const addNewTracker = createAsyncThunk<Data, string>(
 				title: 'Новая категория',
 				timeframes: {
 					previous: 0,
-					start: 0
+					start: 0,
+					paused: 0
 				},
 				color: 'rgb(107, 218, 111)',
 				img: '📓',
@@ -203,6 +235,31 @@ export const dataSlice = createSlice({
 		builder.addCase(addNewTracker.rejected, (state, action) => {
 			state.error = action.error;
 		});
+		builder
+			.addMatcher(
+				(action) =>
+					action.type === startTrackerTime.fulfilled.type ||
+					action.type === pauseTracker.fulfilled.type,
+				(state, action) => {
+					const index = state.userData?.findIndex((item) => item.dataId === action.payload.id);
+					if (index !== undefined && index !== -1 && state.userData) {
+						if (action.type === startTrackerTime.fulfilled.type) {
+							state.userData[index].timeframes.start = action.payload.start;
+							state.userData[index].timeframes.paused = 0;
+						} else if (action.type === pauseTracker.fulfilled.type) {
+							state.userData[index].timeframes.paused = action.payload.paused;
+						}
+					}
+				}
+			)
+			.addMatcher(
+				(action) =>
+					action.type === startTrackerTime.rejected.type ||
+					action.type === pauseTracker.rejected.type,
+				(state, action) => {
+					state.error = action.error;
+				}
+			);
 	}
 });
 export const { setView, setPrevious } = dataSlice.actions;

@@ -2,6 +2,7 @@
 
 html[data-theme='light'] {
 	--color-dark: rgb(47, 47, 47);
+	--color-primary: #131313;
 	--color-primary2: rgb(19, 19, 19);
 	--color-input: rgb(246, 246, 246);
 	--color-panel: rgba(255, 255, 255, 1);
@@ -15,6 +16,7 @@ html[data-theme='dark'] {
 	--color-panel: #131313;
 	--color-text: #ffffff;
 	--color-input: rgb(52, 52, 52);
+	--color-primary: #ffffff;
 	--color-primary2: rgb(53, 53, 53);
 	--color-gray: rgb(114, 114, 114);
 	--color-gray2: rgb(183, 183, 183);

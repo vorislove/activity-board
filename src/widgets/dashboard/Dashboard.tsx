@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/hooks';
 import { initData, isLoadingSelector, trackerSelector, viewSelector } from 'entities/tracker';
 import { idSelector } from 'entities/user';
 import { DashboardItem } from 'features';
-import { TrackerListSkeltons } from 'entities';
+import { TrackerListSkeltons } from 'entities/skeletons';
 
 export const Dashboard = () => {
 	const data = useAppSelector(trackerSelector);

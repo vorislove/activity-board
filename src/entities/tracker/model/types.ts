@@ -1,38 +1,39 @@
 import { SerializedError } from '@reduxjs/toolkit';
 
-export interface Timeframes {
+export type Timeframes = {
 	previous: number;
 	start: number;
-}
+	paused: number;
+};
 
-export interface Data {
+export type Data = {
 	title: string;
 	timeframes: Timeframes;
 	color: string;
 	img: string;
 	uid: string;
 	dataId: string | null;
-}
+};
 
-export interface DataState {
+export type DataState = {
 	userData?: Data[] | null;
 	error?: SerializedError;
 	isLoading: boolean;
 	isLoadingAdd: boolean;
 	view: 'minutes' | 'hours' | 'daily' | 'weekly';
-}
+};
 
-export interface DataPayLoad {
+export type DataPayLoad = {
 	title: string;
 	timeframes: Timeframes;
 	color: string;
 	img: string;
-}
+};
 
-export interface PayLoad {
+export type PayLoad = {
 	userData?: Data[] | null;
-}
+};
 
-export interface ViewType {
+export type ViewType = {
 	view: DataState['view'];
-}
+};

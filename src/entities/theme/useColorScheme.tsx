@@ -30,27 +30,24 @@ export function useColorScheme() {
 	}, []);
 
 	useEffect(() => {
-		const root = document.querySelector('#root');
-		if (root) {
-			const changeTheme = () => {
-				if (isDarkMode) {
-					document.documentElement.setAttribute('data-theme', Theme.DARK);
-				} else if (!isDarkMode) {
-					document.documentElement.setAttribute('data-theme', Theme.LIGHT);
-				}
-			};
-
-			switch (theme) {
-				case Theme.AUTO:
-					changeTheme();
-					break;
-				case Theme.DARK:
-					document.documentElement.setAttribute('data-theme', Theme.DARK);
-					break;
-				case Theme.LIGHT:
-					document.documentElement.setAttribute('data-theme', Theme.LIGHT);
-					break;
+		const changeTheme = () => {
+			if (isDarkMode) {
+				document.documentElement.setAttribute('data-theme', Theme.DARK);
+			} else if (!isDarkMode) {
+				document.documentElement.setAttribute('data-theme', Theme.LIGHT);
 			}
+		};
+
+		switch (theme) {
+			case Theme.AUTO:
+				changeTheme();
+				break;
+			case Theme.DARK:
+				document.documentElement.setAttribute('data-theme', Theme.DARK);
+				break;
+			case Theme.LIGHT:
+				document.documentElement.setAttribute('data-theme', Theme.LIGHT);
+				break;
 		}
 	}, [theme, isDarkMode]);
 

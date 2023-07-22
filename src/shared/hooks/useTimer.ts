@@ -1,10 +1,31 @@
-import React, { useRef, useState } from 'react';
-import { updateTime } from '../../entities/tracker/model/sliceData';
+import { useRef, useState, useMemo, useEffect, useCallback } from 'react';
 
-export default function useTimer() {
-	const [time, setTime] = useState<number>(0);
+type TTimer = (
+	start: number,
+	paused: number
+) => {
+	time: number;
+	isRunning: boolean;
+	formatTime: (time: number) => string;
+	startTimer: () => void;
+	pauseTimer: () => void;
+	stopTimer: () => void;
+};
+
+export const useTimer: TTimer = function (start, paused) {
+	const [time, setTime] = useState(0);
 	const [isRunning, setIsRunning] = useState(false);
 	const intervalRef = useRef<any | null>(null);
+
+	useMemo(() => {
+		const time = Math.floor((Date.now() - start) / 1000);
+		const timeInPaused = Math.floor((paused - start) / 1000);
+		if (start !== 0 && paused === 0) {
+			setTime(time);
+		} else if (start !== 0 && paused !== 0) {
+			setTime(timeInPaused);
+		}
+	}, []);
 
 	const formatTime = (time: number) => {
 		const hours = Math.floor(time / 3600);
@@ -18,14 +39,13 @@ export default function useTimer() {
 		return `${formattedHours}:${formattdMiuntes}:${formattesSeconds}`;
 	};
 
-	const startTimer = () => {
+	function startTimer() {
 		setIsRunning(true);
+
 		intervalRef.current = setInterval(() => {
-			setTime((prevTime) => {
-				return prevTime + 1;
-			});
+			setTime((prevTime) => prevTime + 1);
 		}, 1000);
-	};
+	}
 
 	const pauseTimer = () => {
 		setIsRunning(false);
@@ -33,10 +53,16 @@ export default function useTimer() {
 	};
 
 	const stopTimer = () => {
+		setTime(0);
 		setIsRunning(false);
 		clearInterval(intervalRef.current);
-		setTime(0);
 	};
+
+	useEffect(() => {
+		return () => {
+			clearInterval(intervalRef.current);
+		};
+	}, []);
 
 	return {
 		time,
@@ -46,4 +72,6 @@ export default function useTimer() {
 		pauseTimer,
 		stopTimer
 	};
-}
+};
+
+export default useTimer;

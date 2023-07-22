@@ -1,5 +1,4 @@
-import { useColorScheme } from 'entities';
-import { Theme } from 'entities/theme';
+import { Theme, useColorScheme } from 'entities/theme';
 import clsx from 'clsx';
 import './DarkModeToggle.scss';
 
